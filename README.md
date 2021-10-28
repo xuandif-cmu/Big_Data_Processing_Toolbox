@@ -6,4 +6,5 @@ A microservice-based application support runing Apache Hadoop, Spark, Jupyter No
   ![GKE](gke.png)
   and their corresponding load balancers,
   ![service](service.png)
+  application_screenshots/*.png :creenshot for running each individual application.
 4. Steps you used to run Docker images on Kubernetes Engine
