@@ -3,4 +3,4 @@ A microservice-based application support runing Apache Hadoop, Spark, Jupyter No
 
 
 1. Screenshot for the Kubernetes Engine with the containers running on it.
-  ![GKE](gke.jpg)
+  ![GKE](gke.png)
