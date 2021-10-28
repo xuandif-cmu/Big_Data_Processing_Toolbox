@@ -5,5 +5,4 @@ A microservice-based application support runing Apache Hadoop, Spark, Jupyter No
 3. Screenshot for the Kubernetes Engine with the containers running on it.
   ![GKE](gke.png)
   
-4. Steps for deployment
-
+4. Steps you used to run Docker images on Kubernetes Engine
