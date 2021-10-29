@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox-jupyter
+  labels:
+    app: toolbox-jupyter
+spec:
+  selector:
+     matchLabels:
+       app: toolbox-jupyter
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
+  template:
+    metadata:
+      labels:
+        app: toolbox-jupyter
+    spec:
+      containers:
+        - image: xuandif/toolbox-jupyter #jupyter/base-notebook:latest
+          imagePullPolicy: Always
+          name: toolbox-jupyter
+          ports:
+            - containerPort: 8888

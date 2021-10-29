@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox-hadoop
+  labels:
+    app: toolbox-hadoop
+spec:
+  selector:
+     matchLabels:
+       app: toolbox-hadoop
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
+  template:
+    metadata:
+      labels:
+        app: toolbox-hadoop
+    spec:
+      containers:
+          - image: xuandif/toolbox-hadoop
+            imagePullPolicy: Always
+            name: toolbox-hadoop
+            ports:
+              - containerPort: 50070
+            securityContext:
+              privileged: true

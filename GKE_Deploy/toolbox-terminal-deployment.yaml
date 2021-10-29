@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox-terminal
+  labels:
+    app: toolbox-terminal
+spec:
+  selector:
+    matchLabels:
+      app: toolbox-terminal
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
+  template:
+    metadata:
+      labels:
+        app: toolbox-terminal
+    spec:
+      containers:
+      - image: xuandif/toolbox-terminal
+        imagePullPolicy: Always
+        name: toolbox-terminal
+        ports:
+          - containerPort: 8080

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox-sonar
+  labels:
+    app: toolbox-sonar
+spec:
+  selector:
+     matchLabels:
+       app: toolbox-sonar
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
+  template:
+    metadata:
+      labels:
+        app: toolbox-sonar
+    spec:
+      containers:
+        - image: xuandif/toolbox-sonar
+          imagePullPolicy: Always
+          name: toolbox-sonar
+          ports:
+            - containerPort: 9000
