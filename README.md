@@ -22,13 +22,22 @@ A microservice-based application support runing Apache Hadoop, Spark, Jupyter No
   Sonarqube:
   ![Sonarqube](application_screenshots/sonar.png)
 4. Steps used to run Docker images on Kubernetes Engine
-  4.1. Build docker images and push to docker hub.
-  4.2. Deploy applications to kubernetes, e.g. for jupyter-notebook, use the following commands
+
+    4.1. Build docker images using Dockerfiles and push to docker hub. e.g. for jupyter notebook,
+      ```
+      cd Docker/jupyter
+      docker build -t xuandif/toolbox-jupyter .
+      docker push xuandif/toolbox-jupyter
+      ```
+  
+    4.2. Deploy applications to kubernetes, e.g. for jupyter-notebook, use the following commands
       ```
       kubectl apply -f toolbox-jupyter-deployment.yaml
       kubectl apply -f service-toolbox-jupyter-lb.yaml
       ```
-  4.3. For hadoop, there is one more step needed, open the application in terminal by using its pod id,
+      Similiar for deploying SonarQube and spark, just substitute the yaml files with its own yaml files.
+      
+    4.3. For deploying hadoop, there is one more step needed, open the application in terminal by using its pod id,
       ```
         kubectl exec -it --namespace=default [hadoop-pod-id] -- bin/sh
       ```
@@ -37,7 +46,7 @@ A microservice-based application support runing Apache Hadoop, Spark, Jupyter No
         cd multinode-hadoop & ./run.sh 
       ```
      
-  4.4. After deploying all applications, check external IPs for each application and update them in the terminal.py, push it to docker hub, and deploy with
-      ```
-      kubectl apply -f toolbox-terminal-deployment.yaml
-      ```
+    4.5. After deploying all applications, check external IPs for each application and update them in the terminal.py, push it to docker hub, and deploy with
+       ```
+       kubectl apply -f toolbox-terminal-deployment.yaml
+       ```
