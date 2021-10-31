@@ -13,12 +13,15 @@ A microservice-based application support runing Apache Hadoop, Spark, Jupyter No
   ![GKE](gke.png)
   and their corresponding load balancers,
   ![service](service.png)
+  Terminal: 
+  (running on cluster using ``kubectl exec -it [toolbox-terminal-55c65bc68f-cqvh8] -- bin/sh``)
+  ![terminal](application_screenshots/terminal.png)
+  Jupyter Notebook:
+  ![jupyter](application_screenshots/jupyter-notebook.png)
   Hadoop:
   ![hadoop](application_screenshots/hadoop.png)
   Spark:
   ![spark](application_screenshots/spark.png)
-  Jupyter Notebook:
-  ![jupyter](application_screenshots/jupyter-notebook.png)
   Sonarqube:
   ![Sonarqube](application_screenshots/sonar.png)
 4. Steps used to run Docker images on Kubernetes Engine
