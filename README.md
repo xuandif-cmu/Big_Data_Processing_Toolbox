@@ -30,7 +30,7 @@ A microservice-based application support runing Apache Hadoop, Spark, Jupyter No
         cd multinode-hadoop & ./run.sh 
       ```
      
-  4.4. After deploying all applications, check external IPs for each application and update them in the terminal.py, push it to docker hub, and deploy
+  4.4. After deploying all applications, check external IPs for each application and update them in the terminal.py, push it to docker hub, and deploy with
       ```
       kubectl apply -f toolbox-terminal-deployment.yaml
       ```
