@@ -4,4 +4,4 @@ The multinode-hadoop is built upon this application(https://github.com/lvntyldz/
   ```
   ./run.sh [slave_num]
   ```
-  There is some problem with run.sh in the original package, it is now fixed to follow bash syntax.
+  There are some problems with run.sh in the original package, it is now fixed to follow bash syntax.
