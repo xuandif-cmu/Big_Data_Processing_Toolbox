@@ -13,7 +13,14 @@ A microservice-based application support runing Apache Hadoop, Spark, Jupyter No
   ![GKE](gke.png)
   and their corresponding load balancers,
   ![service](service.png)
-  application_screenshots/*.png :screenshot for running each individual application.
+  Hadoop:
+  ![hadoop](application_screenshots/hadoop.png)
+  Spark:
+  ![spark](application_screenshots/spark.png)
+  Jupyter Notebook:
+  ![jupyter](application_screenshots/jupyter-notebook.png)
+  Sonarqube:
+  ![Sonarqube](application_screenshots/sonar.png)
 4. Steps used to run Docker images on Kubernetes Engine
   4.1. Build docker images and push to docker hub.
   4.2. Deploy applications to kubernetes, e.g. for jupyter-notebook, use the following commands
