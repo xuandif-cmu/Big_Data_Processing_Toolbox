@@ -1,7 +1,7 @@
 # Big_Data_Processing_Toolbox (Checkpoint)
 A microservice-based application support runing Apache Hadoop, Spark, Jupyter Notebooks, SonarQube and  SonarScanner without installation
 ## 1. Video Code Walkthrough
-  Youtube Link: https://youtu.be/nZ8R5ty7Ph8
+  Youtube Link: https://youtu.be/nZ8R5ty7Ph8 <br>
   Google Drive Link: https://drive.google.com/file/d/1bDCBz9P_WoJDZTELb12s54eNaTA1_NcY/view?usp=sharing
 ## 2. Docker Images
 - Docker/web/*: Source Code for the web GUI.
