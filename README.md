@@ -8,7 +8,7 @@ A microservice-based application support runing Apache Hadoop, Spark, Jupyter No
 - Docker Images
   - Source code: Docker/*
   - URLs:
-    - Web GUI: https://hub.docker.com/r/xuandif/toolbox-web:color
+    - Web GUI: https://hub.docker.com/r/xuandif/toolbox-web
     - Hadoop: https://hub.docker.com/r/xuandif/toolbox-hadoop
     - Jupyter Notebook: https://hub.docker.com/r/xuandif/toolbox-jupyter 
     - Spark: https://hub.docker.com/r/bitnami/spark
