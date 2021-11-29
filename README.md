@@ -1,5 +1,5 @@
 # Big_Data_Processing_Toolbox (Checkpoint)
-A microservice-based application support runing Apache Hadoop, Spark, Jupyter Notebooks, SonarQube and  SonarScanner without installation
+A microservice-based application support runing Apache Hadoop, Spark, Jupyter Notebooks, SonarQube and  SonarScanner without installation.
 ## 1. Video Code Walkthrough
   Youtube Link: https://youtu.be/nZ8R5ty7Ph8 <br>
   Google Drive Link: https://drive.google.com/file/d/1bDCBz9P_WoJDZTELb12s54eNaTA1_NcY/view?usp=sharing
@@ -28,7 +28,7 @@ A microservice-based application support runing Apache Hadoop, Spark, Jupyter No
   Sonarqube:
   ![Sonarqube](application_screenshots/sonar.png)
 ## 4. Steps
-Steps used to build Docker images and deploy applications on Kubernetes Engine
+Steps used to build Docker images and deploy applications on Kubernetes Engine.
 
   4.1. Build docker images using Dockerfiles and push to docker hub. All docker files are under the Docker/ directory. e.g. for jupyter notebook,
   ```
@@ -53,7 +53,7 @@ Steps used to build Docker images and deploy applications on Kubernetes Engine
   ```
     gcloud compute firewall-rules create toolbox-jupyter-service --allow tcp:30090
   ```
-  Same steps need to be done for spark, sonarqube and hadoop. <br> That way, each application can be accessed by [IP]:[Node Port]. Since I have reserved a static IP and attached it to the vm instances, the [IP] will be the static ip I reserved. The [IP] can also be found on GCP through going to <b>VPC network</b> -> <b>External IP addresses</b>, found the one in used by your cluster. <br>
+  Same steps need to be done for spark, sonarqube and hadoop. <br> That way, each application can be accessed by [IP]:[Node Port]. Since I have reserved a static IP and attached it to the vm instances, the [IP] will be the static IP I reserved. The [IP] can also be found on GCP through going to <b>VPC network</b> -> <b>External IP addresses</b>, found the one in used by your cluster. <br>
   The node port for each service are, spark: 30080, sonarqube: 30070, hadoop: 30060 and jupyter: 30090.
 
   4.3. For deploying hadoop, there is one more step needed to create multinode hadoop cluster. Access the pod in cloud shell terminal by using its pod name (obtained through ```kubectl get pods```),
@@ -65,7 +65,7 @@ Steps used to build Docker images and deploy applications on Kubernetes Engine
     cd multinode-hadoop & ./run.sh 2
   ```
      
-  4.4. [Web GUI] After deploying all applications, check external IPs for each application, which will be [IP]:[Nodeport] and update them in the index.html, build the docker image for web GUI and push it to docker hub with,
+  4.4. [Web GUI] After deploying all applications, check external IPs for each application, which will be [IP]:[Node Port] and update them in the index.html, build the docker image for web GUI and push it to docker hub with,
   ```
     docker build -t xuandif/toolbox-web:color .
     docker push xuandif/toolbox-web:color
