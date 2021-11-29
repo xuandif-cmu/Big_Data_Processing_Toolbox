@@ -36,7 +36,8 @@ Steps used to build Docker images and deploy applications on Kubernetes Engine
     docker build -t xuandif/toolbox-jupyter .
     docker push xuandif/toolbox-jupyter
   ```
-  
+  If your are building the application from scratch, substitue xuandif with [your docker id], otherwise, the above steps are not needed, you can directly use the docker images list in Section 2. Same for step 4.4.
+
   4.2. Deploy applications to kubernetes with configuration files under the GKE_Deploy/ directory, e.g. for jupyter-notebook, use commands like the following to deploy the applications and expose the service,
   ```
     cd GKE_Deploy
@@ -52,10 +53,10 @@ Steps used to build Docker images and deploy applications on Kubernetes Engine
   ```
     gcloud compute firewall-rules create toolbox-jupyter-service --allow tcp:30090
   ```
-  Same steps need to be done for spark, sonarqube and hadoop.<br>
-  We set up the port for services as: spark: 30080, sonarqube: 30070, hadoop: 30060 and jupyter: 30090.
+  Same steps need to be done for spark, sonarqube and hadoop. <br> That way, each application can be accessed by [IP]:[Node Port]. Since I have reserved a static IP and attached it to the vm instances, the [IP] will be the static ip I reserved. The [IP] can also be found on GCP through going to <b>VPC network</b> -> <b>External IP addresses</b>, found the one in used by your cluster. <br>
+  The node port for each service are, spark: 30080, sonarqube: 30070, hadoop: 30060 and jupyter: 30090.
 
-  4.3. For deploying hadoop, there is one more step needed to create multinode hadoop cluster, access the pod in cloud shell terminal by using its pod name (obtained through ```kubectl get pods```),
+  4.3. For deploying hadoop, there is one more step needed to create multinode hadoop cluster. Access the pod in cloud shell terminal by using its pod name (obtained through ```kubectl get pods```),
   ```
     kubectl exec -it --namespace=default [hadoop-pod-id] -- bin/sh
   ```
@@ -64,16 +65,18 @@ Steps used to build Docker images and deploy applications on Kubernetes Engine
     cd multinode-hadoop & ./run.sh 2
   ```
      
-  4.4. [Web GUI] After deploying all applications, check external IPs for each application, which will be, [IP]:[Nodeport] and update them in the index.html, build the docker image for web GUI and push it to docker hub with,
+  4.4. [Web GUI] After deploying all applications, check external IPs for each application, which will be [IP]:[Nodeport] and update them in the index.html, build the docker image for web GUI and push it to docker hub with,
   ```
     docker build -t xuandif/toolbox-web:color .
     docker push xuandif/toolbox-web:color
   ```
-  and deploy it on kubernete cluster with,
+  If your are building the application from scratch, substitue xuandif with [your docker id], otherwise, this above step is not needed, you can directly use xuandif/toolbox-web:color. <br><br>
+  Then, deploy it on kubernete cluster with,
   ```
     kubectl apply -f toolbox-web-deployment.yaml
     kubectl apply -f service-toolbox-web-lb.yaml
   ```
+  Then, you will be able to find the IP for web GUI through the GCP, which is the endpoints for toolbox-web service.
   The following shows what the kubernete cluster contains after the deployment,
   
   Containers:
