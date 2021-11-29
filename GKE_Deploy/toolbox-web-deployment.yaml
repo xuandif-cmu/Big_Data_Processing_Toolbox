@@ -19,6 +19,6 @@ spec:
    spec:
      containers:
        - name: toolbox-web
-         image: xuandif/toolbox-web:styled
+         image: xuandif/toolbox-web:color
          ports:
            - containerPort: 80
