@@ -1,12 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: toolbox-sonar-lb
+  labels:
+    app: toolbox-sonar
+  name: toolbox-sonar
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-    - port: 8080
+    - name: toolbox-sonar
+      port: 9000
       protocol: TCP
       targetPort: 9000
+      nodePort: 30070
   selector:
     app: toolbox-sonar

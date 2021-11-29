@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: toolbox-spark
+ name: toolbox-web
 spec:
  strategy:
    rollingUpdate:
@@ -11,14 +11,14 @@ spec:
  replicas: 1
  selector:
    matchLabels:
-     app: toolbox-spark
+     app: toolbox-web
  template:
    metadata:
      labels:
-       app: toolbox-spark
+       app: toolbox-web
    spec:
      containers:
-       - name: toolbox-spark
-         image: bitnami/spark
+       - name: toolbox-web
+         image: xuandif/toolbox-web:styled
          ports:
-           - containerPort: 8080
+           - containerPort: 80

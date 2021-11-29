@@ -1,12 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-	name: spark-master
+  labels:
+    app: toolbox-spark
+  name: toolbox-spark
 spec:
-	type: LoadBalancer
-	ports:
-		- port: 8081
-			protocol: TCP
-			targetPort: 8080
- 	selector:
-    	app: spark-master
+  type: NodePort
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 30080
+  selector:
+    app: toolbox-spark
